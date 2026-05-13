@@ -5,948 +5,497 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Impact — Client Results Across Every Vertical</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  /* ─── RESET & BASE ─── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg:       #06080F;
-    --bg2:      #0C0F1C;
-    --bg3:      #111525;
-    --border:   rgba(255,255,255,0.07);
-    --text:     #E8F0FF;
-    --muted:    #4A5470;
-    --ec:       #FF8C42;
-    --hc:       #4AFFC4;
-    --fi:       #7B9FFF;
-    --re:       #FFD166;
-    --ed:       #E07AF5;
-    --sa:       #FF6B9D;
-    --cream:    #F4F1EB;
-    --ink:      #1A1200;
+    --bg:      #F7F5F0;
+    --bg2:     #EFEDE7;
+    --bg3:     #E5E2DA;
+    --ink:     #1A1814;
+    --ink2:    #3D3A35;
+    --ink3:    #7A7670;
+    --accent:  #1B4D3E;
+    --accent2: #2A6B55;
+    --accentbg:#EAF2EE;
+    --line:    rgba(26,24,20,0.1);
   }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  ::selection { background: rgba(74,255,196,0.25); }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
 
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 60px;
-    background: rgba(6,8,15,0.85);
-    backdrop-filter: blur(18px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 2px;
-    color: var(--text);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .nav-logo span { color: var(--hc); }
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 60px; background: rgba(247,245,240,0.93); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+  .nav-logo { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--ink); }
+  .nav-logo span { color: var(--accent); }
   .nav-links { display: flex; gap: 32px; }
-  .nav-links a {
-    font-size: 12px; font-weight: 500; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--muted);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; color: var(--bg);
-    background: var(--hc); padding: 10px 22px;
-    border-radius: 6px; text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .nav-cta:hover { opacity: 0.85; }
+  .nav-links a { font-size: 13px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { font-size: 12px; font-weight: 500; color: #fff; background: var(--accent); padding: 10px 22px; border-radius: 6px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent2); }
 
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    justify-content: flex-end;
-    padding: 130px 60px 80px;
-    position: relative; overflow: hidden;
-  }
-  .hero-deco {
-    position: absolute; top: 60px; right: -30px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 280px; line-height: 1;
-    color: rgba(255,255,255,0.03);
-    letter-spacing: -8px; pointer-events: none;
-    user-select: none;
-  }
-  .hero-grid-lines {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 100%, black 40%, transparent 100%);
-  }
-  .hero-eyebrow {
-    font-size: 11px; font-weight: 600; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--hc);
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .hero-eyebrow::before {
-    content: ''; width: 32px; height: 1px; background: var(--hc);
-  }
-  .hero-h {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 10vw, 130px);
-    line-height: 0.92; letter-spacing: 2px;
-    color: var(--text);
-    max-width: 900px;
-  }
-  .hero-h em { font-style: normal; color: var(--hc); }
-  .hero-bottom {
-    display: flex; align-items: flex-end;
-    justify-content: space-between; gap: 60px;
-    margin-top: 48px;
-  }
-  .hero-sub {
-    font-size: 16px; color: var(--muted); line-height: 1.8;
-    max-width: 480px; font-weight: 300;
-  }
-  .hero-sub strong { color: var(--text); font-weight: 500; }
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 140px 60px 80px; position: relative; overflow: hidden; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 90% 70% at 50% 100%, black 30%, transparent 100%); }
+  .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); }
+  .hero-h { font-family: 'Fraunces', serif; font-size: clamp(64px, 9vw, 118px); line-height: 0.95; font-weight: 300; color: var(--ink); max-width: 860px; letter-spacing: -2px; }
+  .hero-h em { font-style: italic; color: var(--accent); }
+  .hero-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 60px; margin-top: 56px; }
+  .hero-sub { font-size: 16px; color: var(--ink3); line-height: 1.85; max-width: 480px; font-weight: 300; }
+  .hero-sub strong { color: var(--ink); font-weight: 500; }
+  .vtags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+  .vtag { font-size: 11px; font-weight: 400; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--line); color: var(--ink2); background: #fff; }
   .hero-stats { display: flex; gap: 48px; flex-shrink: 0; }
   .hs { text-align: right; }
-  .hs-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px; line-height: 1; color: var(--text);
-  }
-  .hs-label {
-    font-size: 10px; color: var(--muted); letter-spacing: 1.5px;
-    text-transform: uppercase; margin-top: 4px;
-  }
-  .vtags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 40px; }
-  .vtag {
-    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; padding: 6px 14px;
-    border-radius: 20px; border: 1px solid; cursor: default;
-  }
+  .hs-num { font-family: 'Fraunces', serif; font-size: 44px; line-height: 1; font-weight: 300; color: var(--ink); }
+  .hs-label { font-size: 11px; color: var(--ink3); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
 
-  /* ─── SECTION COMMON ─── */
-  section { padding: 100px 60px; }
-  .section-eyebrow {
-    font-size: 10px; font-weight: 700; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--hc);
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--hc); }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 5vw, 68px); line-height: 1;
-    letter-spacing: 1px; color: var(--text);
-    max-width: 700px; margin-bottom: 20px;
-  }
-  .section-title em { font-style: normal; color: var(--hc); }
-  .section-sub {
-    font-size: 15px; color: var(--muted); line-height: 1.85;
-    max-width: 600px; font-weight: 300;
-  }
-
-  /* ─── NUMBERS BAR ─── */
-  .numbers-bar {
-    background: var(--bg2);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 0 60px;
-    display: flex;
-  }
-  .nb-item {
-    flex: 1; padding: 36px 0;
-    border-right: 1px solid var(--border);
-    display: flex; flex-direction: column; align-items: center;
-    gap: 6px;
-  }
+  /* NUMBERS BAR */
+  .nb-bar { background: var(--ink); display: flex; }
+  .nb-item { flex: 1; padding: 32px 0; border-right: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .nb-item:last-child { border-right: none; }
-  .nb-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px; line-height: 1; color: var(--text);
-  }
-  .nb-label {
-    font-size: 10px; color: var(--muted); letter-spacing: 1.5px;
-    text-transform: uppercase; text-align: center;
-  }
+  .nb-num { font-family: 'Fraunces', serif; font-size: 42px; line-height: 1; font-weight: 300; color: #fff; }
+  .nb-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
 
-  /* ─── PROCESS SECTION ─── */
-  .process { background: var(--bg); }
-  .process-intro {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; margin-bottom: 80px;
-  }
-  .process-steps { display: flex; flex-direction: column; gap: 0; }
-  .step {
-    display: grid; grid-template-columns: 64px 1fr;
-    gap: 28px; padding: 36px 0;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    transition: background 0.3s;
-  }
-  .step:first-child { border-top: 1px solid var(--border); }
-  .step:hover { background: rgba(255,255,255,0.015); }
-  .step-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px; letter-spacing: 2px; color: var(--muted);
-    padding-top: 4px;
-  }
-  .step-body {}
-  .step-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px; letter-spacing: 1px;
-    color: var(--text); margin-bottom: 10px;
-  }
-  .step-accent { color: var(--hc); }
-  .step-desc {
-    font-size: 14px; color: var(--muted); line-height: 1.85;
-    font-weight: 300; max-width: 500px;
-  }
-  .step-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
-  .step-tag {
-    font-size: 10px; font-weight: 600; letter-spacing: 1px;
-    color: var(--hc); background: rgba(74,255,196,0.08);
-    padding: 4px 10px; border-radius: 4px;
-    text-transform: uppercase;
-  }
-  .step-metric {
-    margin-top: 14px; padding: 12px 16px;
-    background: var(--bg3); border-radius: 8px;
-    border-left: 2px solid var(--hc);
-    font-size: 12px; color: var(--muted);
-  }
-  .step-metric strong { color: var(--text); font-weight: 600; }
+  /* SECTION */
+  section { padding: 100px 60px; }
+  .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .section-eyebrow::before { content: ''; width: 20px; height: 1px; background: var(--accent); }
+  .section-title { font-family: 'Fraunces', serif; font-size: clamp(36px, 4.5vw, 56px); line-height: 1.05; font-weight: 300; color: var(--ink); letter-spacing: -1px; max-width: 600px; margin-bottom: 20px; }
+  .section-title em { font-style: italic; color: var(--accent); }
+  .section-sub { font-size: 15px; color: var(--ink3); line-height: 1.85; max-width: 560px; font-weight: 300; }
 
-  /* Right column: methodology detail */
-  .process-detail { padding-top: 8px; }
-  .pd-card {
-    background: var(--bg2); border-radius: 14px;
-    padding: 36px; margin-bottom: 16px;
-    border: 1px solid var(--border);
-  }
-  .pd-card-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 20px;
-  }
-  .pd-tool-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-  }
-  .pd-tool {
-    background: var(--bg3); border-radius: 8px;
-    padding: 12px 14px; font-size: 12px; color: var(--muted);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .pd-tool-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--hc); flex-shrink: 0; }
-  .pd-quote {
-    font-size: 15px; font-style: italic; color: var(--text);
-    line-height: 1.75; font-weight: 300;
-    border-left: 2px solid var(--hc); padding-left: 20px;
-    margin-bottom: 12px;
-  }
-  .pd-quote-attr { font-size: 11px; color: var(--muted); padding-left: 20px; }
-  .channel-bars { display: flex; flex-direction: column; gap: 10px; }
-  .cb-row { display: flex; align-items: center; gap: 12px; }
-  .cb-label { font-size: 11px; color: var(--muted); width: 110px; flex-shrink: 0; }
-  .cb-bar-wrap { flex: 1; height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
-  .cb-bar { height: 100%; border-radius: 3px; background: var(--hc); transform-origin: left; animation: barIn 1.2s ease both; }
+  /* PROCESS */
+  .process { background: var(--bg2); }
+  .process-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 64px; align-items: end; }
+  .process-quote { font-family: 'Fraunces', serif; font-size: 17px; font-style: italic; font-weight: 300; color: var(--ink2); line-height: 1.75; border-left: 2px solid var(--accent); padding-left: 20px; margin-bottom: 12px; }
+  .process-quote-attr { font-size: 12px; color: var(--ink3); padding-left: 20px; }
+
+  /* PROCESS VISUAL */
+  .process-visual { background: #fff; border-radius: 16px; border: 1px solid var(--line); padding: 52px 44px 44px; }
+
+  /* FLOW ROW */
+  .pflow { display: grid; grid-template-columns: repeat(5, 1fr); position: relative; margin-bottom: 36px; }
+  .pflow-line { position: absolute; top: 27px; left: calc(10% + 27px); right: calc(10% + 27px); height: 1px; background: repeating-linear-gradient(90deg, var(--accent) 0, var(--accent) 6px, transparent 6px, transparent 14px); z-index: 0; }
+  .pstep { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; padding: 0 6px; cursor: pointer; }
+  .pstep-bubble { width: 54px; height: 54px; border-radius: 50%; background: var(--bg2); border: 1.5px solid var(--line); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; position: relative; transition: background 0.25s, border-color 0.25s; flex-shrink: 0; }
+  .pstep.active .pstep-bubble, .pstep:hover .pstep-bubble { background: var(--accent); border-color: var(--accent); }
+  .pstep-bubble svg { transition: stroke 0.25s; }
+  .pstep.active .pstep-bubble svg, .pstep:hover .pstep-bubble svg { stroke: #fff; }
+  .pstep-badge { position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 9px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+  .pstep.active .pstep-badge { background: var(--accent2); }
+  .pstep-name { font-size: 12px; font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 4px; }
+  .pstep-sub { font-size: 11px; color: var(--ink3); line-height: 1.4; }
+
+  /* DETAIL CARDS ROW */
+  .pdetails { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px; }
+  .pcard { background: var(--bg2); border-radius: 10px; border: 1px solid var(--line); padding: 16px 14px; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+  .pcard:hover, .pcard.active { background: var(--accentbg); border-color: rgba(27,77,62,0.3); }
+  .pcard-step { font-size: 9px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
+  .pcard.active .pcard-step { color: var(--accent); }
+  .pcard-title { font-size: 12px; font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 8px; }
+  .pcard-kicker { font-size: 11px; color: var(--accent); font-weight: 500; }
+
+  /* EXPANDED PANEL */
+  .pexpand { background: var(--accentbg); border-radius: 12px; border: 1px solid rgba(27,77,62,0.2); padding: 28px 28px; display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: start; }
+  .pexpand-desc { font-size: 14px; color: var(--ink2); line-height: 1.85; font-weight: 300; margin-bottom: 14px; }
+  .pexpand-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .ptag { font-size: 10px; font-weight: 500; letter-spacing: 0.5px; color: var(--accent); background: #fff; padding: 4px 10px; border-radius: 4px; border: 1px solid rgba(27,77,62,0.2); text-transform: uppercase; }
+  .pstat-box { background: #fff; border-radius: 10px; border: 1px solid rgba(27,77,62,0.15); padding: 20px 22px; text-align: center; min-width: 148px; }
+  .pstat-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .pstat-label { font-size: 10px; color: var(--ink3); letter-spacing: 1px; text-transform: uppercase; line-height: 1.4; }
+
+  /* TOOLS + CHANNELS */
+  .tc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+  .tc-card { background: #fff; border-radius: 12px; padding: 28px; border: 1px solid var(--line); }
+  .tc-label { font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--ink3); margin-bottom: 20px; }
+  .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tool-pill { font-size: 12px; color: var(--ink2); padding: 9px 12px; background: var(--bg2); border-radius: 6px; border: 1px solid var(--line); display: flex; align-items: center; gap: 8px; }
+  .tool-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .cb-row { display: flex; align-items: center; gap: 10px; margin-bottom: 11px; }
+  .cb-row:last-of-type { margin-bottom: 0; }
+  .cb-name { font-size: 12px; color: var(--ink3); width: 120px; flex-shrink: 0; }
+  .cb-wrap { flex: 1; height: 5px; background: var(--bg2); border-radius: 3px; overflow: hidden; }
+  .cb-fill { height: 100%; border-radius: 3px; background: var(--accent); transform-origin: left; animation: barIn 1.4s ease both; }
   @keyframes barIn { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  .cb-pct { font-size: 11px; font-weight: 600; color: var(--text); width: 36px; text-align: right; flex-shrink: 0; }
+  .cb-pct { font-size: 12px; font-weight: 500; color: var(--ink); width: 34px; text-align: right; flex-shrink: 0; }
 
-  /* ─── VERTICALS ─── */
-  .verticals { background: var(--bg2); }
-  .vert-header {
-    display: flex; justify-content: space-between;
-    align-items: flex-end; margin-bottom: 60px;
-  }
-  .vert-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-    margin-bottom: 16px;
-  }
-  .vc {
-    border-radius: 14px; padding: 32px 28px;
-    position: relative; overflow: hidden;
-    transition: transform 0.25s;
-  }
-  .vc:hover { transform: translateY(-4px); }
-  .vc-glow {
-    position: absolute; right: -30px; bottom: -30px;
-    width: 120px; height: 120px; border-radius: 50%; opacity: 0.1;
-  }
-  .vc-icon-row {
-    display: flex; align-items: center; gap: 8px;
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; margin-bottom: 8px; color: #fff;
-  }
-  .vc-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .vc-client {
-    font-size: 11px; font-weight: 500;
-    color: rgba(255,255,255,0.4);
-    margin-bottom: 20px;
-    padding: 4px 10px; background: rgba(255,255,255,0.06);
-    border-radius: 20px; display: inline-block;
-  }
-  .vc-big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 58px; line-height: 1; color: #fff;
-    margin-bottom: 2px;
-  }
-  .vc-metric {
-    font-size: 10px; letter-spacing: 1.5px;
-    text-transform: uppercase; color: rgba(255,255,255,0.3);
-    font-weight: 600; margin-bottom: 20px;
-  }
-  .vc-stats { display: flex; flex-direction: column; gap: 0; }
-  .vc-stat-row {
-    display: flex; justify-content: space-between;
-    align-items: center; padding: 9px 0;
-    border-top: 1px solid rgba(255,255,255,0.07);
-  }
-  .vc-stat-name { font-size: 11px; color: rgba(255,255,255,0.35); }
-  .vc-stat-val { font-size: 13px; font-weight: 700; }
+  /* VERTICALS */
+  .verticals { background: var(--bg); }
+  .vert-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; }
+  .vert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .vc { background: #fff; border-radius: 14px; padding: 30px 26px; border: 1px solid var(--line); transition: transform 0.25s, box-shadow 0.25s; }
+  .vc:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+  .vc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .vc-ico { width: 30px; height: 30px; border-radius: 8px; background: var(--accentbg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .vc-vname { font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--ink3); }
+  .vc-client { font-size: 11px; color: var(--ink3); margin-bottom: 22px; padding: 4px 10px; background: var(--bg2); border-radius: 20px; display: inline-block; border: 1px solid var(--line); }
+  .vc-big { font-family: 'Fraunces', serif; font-size: 52px; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+  .vc-metric { font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink3); margin-bottom: 18px; }
+  .vc-stats { display: flex; flex-direction: column; }
+  .vc-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); }
+  .vc-n { font-size: 12px; color: var(--ink3); }
+  .vc-v { font-size: 13px; font-weight: 500; color: var(--accent); }
 
-  /* vertical colours */
-  .vc-ec { background: #12090A; } .vc-ec .vc-big,.vc-ec .vc-stat-val { color: #FF8C42; } .vc-ec .vc-glow { background: #FF8C42; }
-  .vc-hc { background: #071410; } .vc-hc .vc-big,.vc-hc .vc-stat-val { color: #4AFFC4; } .vc-hc .vc-glow { background: #4AFFC4; }
-  .vc-fi { background: #080D1B; } .vc-fi .vc-big,.vc-fi .vc-stat-val { color: #7B9FFF; } .vc-fi .vc-glow { background: #7B9FFF; }
-  .vc-re { background: #141008; } .vc-re .vc-big,.vc-re .vc-stat-val { color: #FFD166; } .vc-re .vc-glow { background: #FFD166; }
-  .vc-ed { background: #100A15; } .vc-ed .vc-big,.vc-ed .vc-stat-val { color: #E07AF5; } .vc-ed .vc-glow { background: #E07AF5; }
-  .vc-sa { background: #140509; } .vc-sa .vc-big,.vc-sa .vc-stat-val { color: #FF6B9D; } .vc-sa .vc-glow { background: #FF6B9D; }
+  /* PHILOSOPHY */
+  .philosophy { background: var(--bg2); }
+  .phil-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 60px; }
+  .phil-card { background: var(--bg2); padding: 40px 34px; transition: background 0.25s; }
+  .phil-card:hover { background: #fff; }
+  .phil-num { font-family: 'Fraunces', serif; font-size: 52px; font-weight: 300; color: var(--bg3); line-height: 1; margin-bottom: 16px; }
+  .phil-title { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 400; color: var(--ink); margin-bottom: 14px; line-height: 1.2; }
+  .phil-desc { font-size: 14px; color: var(--ink3); line-height: 1.85; font-weight: 300; }
+  .phil-hl { margin-top: 20px; padding: 12px 16px; background: var(--accentbg); border-radius: 8px; border: 1px solid rgba(27,77,62,0.2); font-size: 12px; font-weight: 500; color: var(--accent); }
 
-  /* ─── IMPACT STRIP ─── */
-  .impact-strip {
-    background: var(--cream); padding: 64px 60px;
-  }
-  .is-inner {
-    display: flex; align-items: center;
-    justify-content: space-between; gap: 40px;
-  }
-  .is-left { flex-shrink: 0; }
-  .is-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; color: #9C8E78; margin-bottom: 6px;
-  }
-  .is-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px; letter-spacing: 1px; color: var(--ink);
-    line-height: 1.1;
-  }
+  /* IMPACT STRIP */
+  .impact-strip { background: var(--ink); padding: 68px 60px; }
+  .is-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+  .is-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+  .is-title { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 300; color: #fff; line-height: 1.2; }
   .is-metrics { display: flex; gap: 0; flex: 1; justify-content: center; }
-  .is-item {
-    text-align: center; padding: 0 32px;
-    border-right: 1px solid #DDD7CB;
-  }
+  .is-item { text-align: center; padding: 0 28px; border-right: 1px solid rgba(255,255,255,0.1); }
   .is-item:last-child { border-right: none; }
-  .is-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 40px; color: var(--ink); line-height: 1;
-  }
-  .is-desc {
-    font-size: 10px; color: #9C8E78; letter-spacing: 1px;
-    text-transform: uppercase; font-weight: 600; margin-top: 4px;
-  }
-  .is-cta {
-    background: var(--ink); color: var(--cream);
-    font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
-    text-transform: uppercase; padding: 14px 28px;
-    border-radius: 8px; text-decoration: none;
-    transition: opacity 0.2s; flex-shrink: 0;
-  }
-  .is-cta:hover { opacity: 0.8; }
+  .is-num { font-family: 'Fraunces', serif; font-size: 38px; font-weight: 300; color: #fff; line-height: 1; }
+  .is-desc { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; margin-top: 5px; }
+  .is-cta { background: #fff; color: var(--ink); font-size: 12px; font-weight: 500; padding: 14px 28px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; flex-shrink: 0; }
+  .is-cta:hover { opacity: 0.85; }
 
-  /* ─── PROCESS PHILOSOPHY ─── */
-  .philosophy { background: var(--bg); padding: 100px 60px; }
-  .phil-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px; background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 14px; overflow: hidden; margin-top: 60px;
-  }
-  .phil-card {
-    background: var(--bg); padding: 40px 36px;
-    transition: background 0.3s;
-  }
-  .phil-card:hover { background: var(--bg2); }
-  .phil-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px; line-height: 1; color: var(--bg3);
-    margin-bottom: 16px;
-  }
-  .phil-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px; letter-spacing: 1px; color: var(--text);
-    margin-bottom: 12px;
-  }
-  .phil-desc {
-    font-size: 13px; color: var(--muted);
-    line-height: 1.85; font-weight: 300;
-  }
-  .phil-highlight {
-    margin-top: 20px; padding: 14px 16px;
-    background: rgba(74,255,196,0.06); border-radius: 8px;
-    border: 1px solid rgba(74,255,196,0.15);
-    font-size: 12px; font-weight: 600; color: var(--hc);
-    letter-spacing: 0.5px;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    background: var(--bg2); padding: 48px 60px;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between;
-    align-items: center; gap: 20px; flex-wrap: wrap;
-  }
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px; letter-spacing: 2px; color: var(--text);
-  }
-  .footer-logo span { color: var(--hc); }
-  .footer-copy {
-    font-size: 11px; color: var(--muted); text-align: center;
-  }
+  /* FOOTER */
+  footer { background: var(--bg2); padding: 40px 60px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .footer-logo { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: 11px; color: var(--ink3); text-align: center; line-height: 1.7; }
   .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 11px; color: var(--muted);
-    text-decoration: none; transition: color 0.2s;
-    letter-spacing: 0.5px;
-  }
-  .footer-links a:hover { color: var(--text); }
+  .footer-links a { font-size: 12px; color: var(--ink3); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
 
-  /* ─── ANIMATIONS ─── */
-  .fade-in {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
-  .fade-in-delay-1 { transition-delay: 0.1s; }
-  .fade-in-delay-2 { transition-delay: 0.2s; }
-  .fade-in-delay-3 { transition-delay: 0.3s; }
-
-  /* live dot */
-  .live-dot {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--hc); display: inline-block;
-    animation: pulse 1.4s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%,100% { opacity:1; transform:scale(1); }
-    50% { opacity:0.4; transform:scale(0.65); }
-  }
+  .fd1 { transition-delay: 0.1s; } .fd2 { transition-delay: 0.2s; } .fd3 { transition-delay: 0.3s; }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
-  <div class="nav-logo">PULSE<span>.</span>MEDIA</div>
+  <div class="nav-logo">Pulse<span>.</span>Media</div>
   <div class="nav-links">
     <a href="#process">Our Process</a>
     <a href="#verticals">Verticals</a>
-    <a href="#numbers">Numbers</a>
     <a href="#philosophy">Philosophy</a>
   </div>
   <a href="#contact" class="nav-cta">Work With Us</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero" id="top">
-  <div class="hero-grid-lines"></div>
-  <div class="hero-deco">IMPACT</div>
-
+  <div class="hero-grid"></div>
   <div class="hero-eyebrow">Client Impact Report 2025–26</div>
   <h1 class="hero-h">Numbers That<br>Tell The <em>Truth</em></h1>
-
   <div class="hero-bottom">
     <div>
-      <p class="hero-sub">
-        We don't measure vanity metrics. We measure what moves businesses forward —
-        <strong>revenue, retention, and real growth</strong> across every vertical we operate in.
-        Here's what six years of data-driven marketing looks like.
-      </p>
+      <p class="hero-sub">We don't measure vanity metrics. We measure what moves businesses forward — <strong>revenue, retention, and real growth</strong> across every vertical we operate in. Six years of data-driven marketing, in one place.</p>
       <div class="vtags">
-        <span class="vtag" style="color:#FF8C42;border-color:#FF8C42;background:rgba(255,140,66,0.08)">E-Commerce</span>
-        <span class="vtag" style="color:#4AFFC4;border-color:#4AFFC4;background:rgba(74,255,196,0.08)">Healthcare</span>
-        <span class="vtag" style="color:#7B9FFF;border-color:#7B9FFF;background:rgba(123,159,255,0.08)">Finance</span>
-        <span class="vtag" style="color:#FFD166;border-color:#FFD166;background:rgba(255,209,102,0.08)">Real Estate</span>
-        <span class="vtag" style="color:#E07AF5;border-color:#E07AF5;background:rgba(224,122,245,0.08)">Education</span>
-        <span class="vtag" style="color:#FF6B9D;border-color:#FF6B9D;background:rgba(255,107,157,0.08)">SaaS</span>
+        <span class="vtag">E-Commerce</span><span class="vtag">Healthcare</span>
+        <span class="vtag">Finance</span><span class="vtag">Real Estate</span>
+        <span class="vtag">Education</span><span class="vtag">SaaS</span>
       </div>
     </div>
     <div class="hero-stats">
-      <div class="hs">
-        <div class="hs-num"><span class="count" data-t="120">0</span>+</div>
-        <div class="hs-label">Brands Scaled</div>
-      </div>
-      <div class="hs">
-        <div class="hs-num">₹<span class="count" data-t="9">0</span>Cr+</div>
-        <div class="hs-label">Revenue Attributed</div>
-      </div>
-      <div class="hs">
-        <div class="hs-num"><span class="count" data-t="97">0</span>%</div>
-        <div class="hs-label">Client Retention</div>
-      </div>
+      <div class="hs"><div class="hs-num"><span class="count" data-t="120">0</span>+</div><div class="hs-label">Brands Scaled</div></div>
+      <div class="hs"><div class="hs-num">₹<span class="count" data-t="9">0</span>Cr+</div><div class="hs-label">Revenue Attributed</div></div>
+      <div class="hs"><div class="hs-num"><span class="count" data-t="97">0</span>%</div><div class="hs-label">Client Retention</div></div>
     </div>
   </div>
 </section>
 
-<!-- ── NUMBERS BAR ── -->
-<div class="numbers-bar" id="numbers">
-  <div class="nb-item fade-in">
-    <div class="nb-num"><span class="count" data-t="68">0</span>K+</div>
-    <div class="nb-label">Leads Generated</div>
-  </div>
-  <div class="nb-item fade-in fade-in-delay-1">
-    <div class="nb-num"><span class="count" data-t="420">0</span>%</div>
-    <div class="nb-label">Avg. ROAS</div>
-  </div>
-  <div class="nb-item fade-in fade-in-delay-2">
-    <div class="nb-num"><span class="count" data-t="52">0</span>%</div>
-    <div class="nb-label">Avg. CPL Reduction</div>
-  </div>
-  <div class="nb-item fade-in fade-in-delay-3">
-    <div class="nb-num"><span class="count" data-t="6">0</span></div>
-    <div class="nb-label">Verticals Mastered</div>
-  </div>
-  <div class="nb-item fade-in" style="transition-delay:0.4s">
-    <div class="nb-num"><span class="count" data-t="4.2" data-f="1">0</span>M+</div>
-    <div class="nb-label">Total Reach / Month</div>
-  </div>
+<!-- NUMBERS BAR -->
+<div class="nb-bar">
+  <div class="nb-item fade-in"><div class="nb-num"><span class="count" data-t="68">0</span>K+</div><div class="nb-label">Leads Generated</div></div>
+  <div class="nb-item fade-in fd1"><div class="nb-num"><span class="count" data-t="420">0</span>%</div><div class="nb-label">Avg. ROAS</div></div>
+  <div class="nb-item fade-in fd2"><div class="nb-num"><span class="count" data-t="52">0</span>%</div><div class="nb-label">Avg. CPL Reduction</div></div>
+  <div class="nb-item fade-in fd3"><div class="nb-num"><span class="count" data-t="4.2" data-f="1">0</span>M+</div><div class="nb-label">Monthly Reach</div></div>
+  <div class="nb-item fade-in" style="transition-delay:0.4s"><div class="nb-num"><span class="count" data-t="6">0</span></div><div class="nb-label">Verticals Mastered</div></div>
 </div>
 
-<!-- ── OUR PROCESS ── -->
+<!-- PROCESS -->
 <section class="process" id="process">
   <div class="process-intro">
     <div>
-      <div class="section-eyebrow">The Method Behind The Metrics</div>
+      <div class="section-eyebrow">The Method Behind the Metrics</div>
       <h2 class="section-title">How We Turn<br>Data Into <em>Growth</em></h2>
-      <p class="section-sub">
-        Every result you'll see on this page follows the same five-stage engine we've refined across 120+ client engagements.
-        No guesswork. No spray-and-pray. Just a rigorous, repeatable playbook — adapted with surgical precision for each vertical.
-      </p>
+      <p class="section-sub">Every result on this page follows the same five-stage engine refined across 120+ client engagements. No guesswork. No spray-and-pray. A rigorous, repeatable playbook — adapted with precision for each vertical.</p>
     </div>
     <div>
-      <p class="section-sub" style="margin-top:8px; font-style: italic; font-size:14px; border-left: 2px solid rgba(74,255,196,0.4); padding-left:20px; line-height:2;">
-        "The difference between an agency and a growth partner is accountability.
-        We tie our fees to your outcomes, which means we're as invested in your numbers as you are."
-      </p>
-      <p style="font-size:11px; color:var(--muted); margin-top:12px; padding-left:20px;">— Founder, Pulse Media</p>
+      <div class="process-quote">"The difference between an agency and a growth partner is accountability. We tie our fees to your outcomes — we're as invested in your numbers as you are."</div>
+      <div class="process-quote-attr">— Founder, Pulse Media</div>
     </div>
   </div>
 
-  <div class="process-steps">
-
-    <div class="step fade-in">
-      <div class="step-num">01 /</div>
-      <div class="step-body">
-        <div class="step-title">Discovery & <span class="step-accent">Diagnosis</span></div>
-        <p class="step-desc">
-          Before we spend a single rupee of your budget, we spend weeks understanding your business. We audit your existing funnels,
-          analyse competitor positioning, map your audience segments with first-party data, and identify the single biggest
-          lever for growth. Most agencies skip this. We consider it non-negotiable.
-        </p>
-        <div class="step-tags">
-          <span class="step-tag">Funnel Audit</span>
-          <span class="step-tag">Competitor Analysis</span>
-          <span class="step-tag">Audience Mapping</span>
-          <span class="step-tag">Cohort Research</span>
+  <div class="process-visual fade-in">
+    <!-- STEP ICONS -->
+    <div class="pflow">
+      <div class="pflow-line"></div>
+      <div class="pstep active" data-step="0" onclick="selectStep(0)">
+        <div class="pstep-bubble">
+          <div class="pstep-badge">01</div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-        <div class="step-metric">
-          Clients who complete full discovery see <strong>2.4× better campaign outcomes</strong> in the first 90 days vs those who skip to execution.
+        <div class="pstep-name">Discovery &amp;<br>Diagnosis</div>
+        <div class="pstep-sub">Audit &amp; research</div>
+      </div>
+      <div class="pstep" data-step="1" onclick="selectStep(1)">
+        <div class="pstep-bubble">
+          <div class="pstep-badge">02</div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
+        <div class="pstep-name">Strategy &amp;<br>Architecture</div>
+        <div class="pstep-sub">Funnel roadmap</div>
+      </div>
+      <div class="pstep" data-step="2" onclick="selectStep(2)">
+        <div class="pstep-bubble">
+          <div class="pstep-badge">03</div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="pstep-name">Execution &amp;<br>Creative</div>
+        <div class="pstep-sub">Multi-channel launch</div>
+      </div>
+      <div class="pstep" data-step="3" onclick="selectStep(3)">
+        <div class="pstep-bubble">
+          <div class="pstep-badge">04</div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="pstep-name">Measure &amp;<br>Optimise</div>
+        <div class="pstep-sub">Live dashboards</div>
+      </div>
+      <div class="pstep" data-step="4" onclick="selectStep(4)">
+        <div class="pstep-bubble">
+          <div class="pstep-badge">05</div>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="pstep-name">Scale &amp;<br>Compound</div>
+        <div class="pstep-sub">Expand &amp; compound ROI</div>
       </div>
     </div>
 
-    <div class="step fade-in fade-in-delay-1">
-      <div class="step-num">02 /</div>
-      <div class="step-body">
-        <div class="step-title">Strategy & <span class="step-accent">Architecture</span></div>
-        <p class="step-desc">
-          Data becomes direction. We build your full-funnel growth strategy — from awareness channels to retention loops —
-          with clear attribution models, KPI targets tied to business outcomes (not impressions), and a channel mix
-          engineered specifically for your vertical's buying behaviour. Every strategy ships with a 90-day growth roadmap
-          and a defined success scorecard.
-        </p>
-        <div class="step-tags">
-          <span class="step-tag">Full-Funnel Architecture</span>
-          <span class="step-tag">Attribution Modelling</span>
-          <span class="step-tag">Channel Mix Design</span>
-          <span class="step-tag">KPI Framework</span>
-        </div>
-        <div class="step-metric">
-          Our attribution model accounts for <strong>7 touchpoints on average</strong> before a conversion — most platforms show only the last one.
-        </div>
-      </div>
+    <!-- DETAIL CARDS -->
+    <div class="pdetails">
+      <div class="pcard active" onclick="selectStep(0)"><div class="pcard-step">Step 01</div><div class="pcard-title">Discovery &amp; Diagnosis</div><div class="pcard-kicker">2.4× better outcomes</div></div>
+      <div class="pcard" onclick="selectStep(1)"><div class="pcard-step">Step 02</div><div class="pcard-title">Strategy &amp; Architecture</div><div class="pcard-kicker">7 touchpoints tracked</div></div>
+      <div class="pcard" onclick="selectStep(2)"><div class="pcard-step">Step 03</div><div class="pcard-title">Execution &amp; Creative</div><div class="pcard-kicker">14 ad variants / month</div></div>
+      <div class="pcard" onclick="selectStep(3)"><div class="pcard-step">Step 04</div><div class="pcard-title">Measure &amp; Optimise</div><div class="pcard-kicker">Winner in 11 days</div></div>
+      <div class="pcard" onclick="selectStep(4)"><div class="pcard-step">Step 05</div><div class="pcard-title">Scale &amp; Compound</div><div class="pcard-kicker">3.1× efficiency at month 12</div></div>
     </div>
 
-    <div class="step fade-in fade-in-delay-2">
-      <div class="step-num">03 /</div>
-      <div class="step-body">
-        <div class="step-title">Execution & <span class="step-accent">Creative</span></div>
-        <p class="step-desc">
-          Strategy without execution is fiction. Our in-house creative, media buying, and SEO teams activate campaigns
-          simultaneously across paid search, paid social, programmatic display, content, email, and WhatsApp — each channel
-          fed with creative that is tested, versioned, and engineered to the platform's native behaviour.
-          We run a minimum of three creative hypotheses per campaign at launch.
-        </p>
-        <div class="step-tags">
-          <span class="step-tag">Paid Media</span>
-          <span class="step-tag">Creative Testing</span>
-          <span class="step-tag">SEO & Content</span>
-          <span class="step-tag">WhatsApp Automation</span>
-          <span class="step-tag">Email Flows</span>
-        </div>
-        <div class="step-metric">
-          Our creative lab produces an average of <strong>14 ad variants per client per month</strong>, enabling continuous winner identification.
+    <!-- EXPANDED PANEL -->
+    <div class="pexpand" id="pexpand">
+      <div>
+        <p class="pexpand-desc" id="pexp-desc">Before spending a single rupee of your budget, we spend weeks truly understanding your business. We audit your existing funnels, analyse competitor positioning, map your audience segments with first-party data, and identify the single biggest lever for growth. Most agencies skip this. We consider it non-negotiable — it's why our campaigns outperform from day one.</p>
+        <div class="pexpand-tags" id="pexp-tags">
+          <span class="ptag">Funnel Audit</span><span class="ptag">Competitor Analysis</span><span class="ptag">Audience Mapping</span><span class="ptag">Cohort Research</span>
         </div>
       </div>
-    </div>
-
-    <div class="step fade-in">
-      <div class="step-num">04 /</div>
-      <div class="step-body">
-        <div class="step-title">Measure & <span class="step-accent">Optimise</span></div>
-        <p class="step-desc">
-          Every campaign runs inside a live analytics environment we build specifically for your business —
-          custom dashboards that surface what matters to your team, not a generic metrics dump.
-          Weekly review cycles mean underperforming assets are paused within 48 hours and budget is reallocated
-          to winners in real time. We don't wait for monthly reports to make decisions.
-        </p>
-        <div class="step-tags">
-          <span class="step-tag">Live Dashboards</span>
-          <span class="step-tag">Weekly Reviews</span>
-          <span class="step-tag">A/B Testing</span>
-          <span class="step-tag">Budget Reallocation</span>
-        </div>
-        <div class="step-metric">
-          On average we identify a <strong>winning creative variant within 11 days</strong> of launch and double down within 48 hours.
-        </div>
+      <div class="pstat-box">
+        <div class="pstat-num" id="pexp-snum">2.4×</div>
+        <div class="pstat-label" id="pexp-slabel">Better Campaign Outcomes</div>
       </div>
     </div>
-
-    <div class="step fade-in fade-in-delay-1">
-      <div class="step-num">05 /</div>
-      <div class="step-body">
-        <div class="step-title">Scale & <span class="step-accent">Compound</span></div>
-        <p class="step-desc">
-          Once a channel-funnel combination proves itself, we scale it deliberately — protecting efficiency metrics while
-          expanding reach. We use lookalike modelling, CRM data enrichment, and cross-channel sequencing to compound results
-          over time. The goal isn't just a great quarter; it's a business that grows more efficiently every month because
-          the data gets smarter.
-        </p>
-        <div class="step-tags">
-          <span class="step-tag">Lookalike Audiences</span>
-          <span class="step-tag">CRM Enrichment</span>
-          <span class="step-tag">Cross-Channel Sequencing</span>
-          <span class="step-tag">LTV Optimisation</span>
-        </div>
-        <div class="step-metric">
-          Clients in month 12 average <strong>3.1× better efficiency metrics</strong> than they had at month 1 — the compounding effect is real.
-        </div>
-      </div>
-    </div>
-
   </div>
 
-  <!-- Right side tools + channel performance -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:60px;">
-    <div class="pd-card fade-in">
-      <div class="pd-card-label">Tools & Stack We Deploy</div>
-      <div class="pd-tool-grid">
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Google Ads & SA360</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Meta Advantage+</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>LinkedIn Campaign Mgr</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Programmatic DSPs</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Klaviyo & MoEngage</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Hotjar & FullStory</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Semrush & Ahrefs</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Custom GA4 Builds</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>Looker Studio Dashboards</div>
-        <div class="pd-tool"><div class="pd-tool-dot"></div>WhatsApp Business API</div>
+  <!-- TOOLS + CHANNELS -->
+  <div class="tc-grid">
+    <div class="tc-card fade-in">
+      <div class="tc-label">Tools &amp; Stack We Deploy</div>
+      <div class="tool-grid">
+        <div class="tool-pill"><div class="tool-dot"></div>Google Ads &amp; SA360</div>
+        <div class="tool-pill"><div class="tool-dot"></div>Meta Advantage+</div>
+        <div class="tool-pill"><div class="tool-dot"></div>LinkedIn Campaign Mgr</div>
+        <div class="tool-pill"><div class="tool-dot"></div>Programmatic DSPs</div>
+        <div class="tool-pill"><div class="tool-dot"></div>Klaviyo &amp; MoEngage</div>
+        <div class="tool-pill"><div class="tool-dot"></div>Hotjar &amp; FullStory</div>
+        <div class="tool-pill"><div class="tool-dot"></div>Semrush &amp; Ahrefs</div>
+        <div class="tool-pill"><div class="tool-dot"></div>Custom GA4 Builds</div>
+        <div class="tool-pill"><div class="tool-dot"></div>Looker Studio</div>
+        <div class="tool-pill"><div class="tool-dot"></div>WhatsApp Business API</div>
       </div>
     </div>
-    <div class="pd-card fade-in fade-in-delay-1">
-      <div class="pd-card-label">Average Revenue Attribution by Channel</div>
-      <div class="channel-bars">
-        <div class="cb-row">
-          <span class="cb-label">Paid Search</span>
-          <div class="cb-bar-wrap"><div class="cb-bar" style="width:82%;animation-delay:0.1s"></div></div>
-          <span class="cb-pct">82%</span>
-        </div>
-        <div class="cb-row">
-          <span class="cb-label">Paid Social</span>
-          <div class="cb-bar-wrap"><div class="cb-bar" style="width:74%;animation-delay:0.2s"></div></div>
-          <span class="cb-pct">74%</span>
-        </div>
-        <div class="cb-row">
-          <span class="cb-label">SEO / Content</span>
-          <div class="cb-bar-wrap"><div class="cb-bar" style="width:61%;animation-delay:0.3s"></div></div>
-          <span class="cb-pct">61%</span>
-        </div>
-        <div class="cb-row">
-          <span class="cb-label">Email & WhatsApp</span>
-          <div class="cb-bar-wrap"><div class="cb-bar" style="width:55%;animation-delay:0.4s"></div></div>
-          <span class="cb-pct">55%</span>
-        </div>
-        <div class="cb-row">
-          <span class="cb-label">Programmatic</span>
-          <div class="cb-bar-wrap"><div class="cb-bar" style="width:40%;animation-delay:0.5s"></div></div>
-          <span class="cb-pct">40%</span>
-        </div>
-        <div class="cb-row">
-          <span class="cb-label">Influencer</span>
-          <div class="cb-bar-wrap"><div class="cb-bar" style="width:28%;animation-delay:0.6s"></div></div>
-          <span class="cb-pct">28%</span>
-        </div>
-      </div>
-      <p style="font-size:11px;color:var(--muted);margin-top:16px;line-height:1.7;">
-        Bars represent avg. % of client revenue we can attribute to each channel using our multi-touch model.
-        Channels are not mutually exclusive — most clients use 4–5 simultaneously.
-      </p>
+    <div class="tc-card fade-in fd1">
+      <div class="tc-label">Revenue Attribution by Channel</div>
+      <div class="cb-row"><span class="cb-name">Paid Search</span><div class="cb-wrap"><div class="cb-fill" style="width:82%;animation-delay:0.1s"></div></div><span class="cb-pct">82%</span></div>
+      <div class="cb-row"><span class="cb-name">Paid Social</span><div class="cb-wrap"><div class="cb-fill" style="width:74%;animation-delay:0.2s"></div></div><span class="cb-pct">74%</span></div>
+      <div class="cb-row"><span class="cb-name">SEO / Content</span><div class="cb-wrap"><div class="cb-fill" style="width:61%;animation-delay:0.3s"></div></div><span class="cb-pct">61%</span></div>
+      <div class="cb-row"><span class="cb-name">Email &amp; WhatsApp</span><div class="cb-wrap"><div class="cb-fill" style="width:55%;animation-delay:0.4s"></div></div><span class="cb-pct">55%</span></div>
+      <div class="cb-row"><span class="cb-name">Programmatic</span><div class="cb-wrap"><div class="cb-fill" style="width:40%;animation-delay:0.5s"></div></div><span class="cb-pct">40%</span></div>
+      <div class="cb-row"><span class="cb-name">Influencer</span><div class="cb-wrap"><div class="cb-fill" style="width:28%;animation-delay:0.6s"></div></div><span class="cb-pct">28%</span></div>
+      <p style="font-size:11px;color:var(--ink3);margin-top:16px;line-height:1.7;">Average % of client revenue attributable to each channel. Most clients run 4–5 channels simultaneously.</p>
     </div>
   </div>
 </section>
 
-<!-- ── VERTICALS ── -->
+<!-- VERTICALS -->
 <section class="verticals" id="verticals">
   <div class="vert-header">
     <div>
       <div class="section-eyebrow">Results by Industry</div>
       <h2 class="section-title">Six Verticals.<br><em>One Standard.</em></h2>
     </div>
-    <p style="font-size:13px;color:var(--muted);max-width:340px;text-align:right;line-height:1.85;font-weight:300;">
-      Each vertical demands a different playbook. The buying cycle for a flat in Mumbai is nothing like a SaaS trial — and our strategies reflect that.
-    </p>
+    <p style="font-size:14px;color:var(--ink3);max-width:320px;text-align:right;line-height:1.85;font-weight:300;">Each vertical demands a different playbook. A Mumbai flat purchase is nothing like a SaaS trial — and our strategies reflect that.</p>
   </div>
-
   <div class="vert-grid">
-    <!-- E-Commerce -->
-    <div class="vc vc-ec fade-in">
-      <div class="vc-glow"></div>
-      <div class="vc-icon-row"><div class="vc-dot" style="background:#FF8C42"></div>E-Commerce</div>
-      <div class="vc-client">FashionForward & 14 brands</div>
+    <div class="vc fade-in">
+      <div class="vc-top"><div class="vc-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><div class="vc-vname">E-Commerce</div></div>
+      <div class="vc-client">FashionForward &amp; 14 brands</div>
       <div class="vc-big"><span class="count" data-t="520">0</span>%</div>
-      <div class="vc-metric">Return on ad spend</div>
+      <div class="vc-metric">Return on Ad Spend</div>
       <div class="vc-stats">
-        <div class="vc-stat-row"><span class="vc-stat-name">Revenue generated</span><span class="vc-stat-val">₹<span class="count" data-t="4.7" data-f="1">0</span>Cr</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Cart abandonment ↓</span><span class="vc-stat-val"><span class="count" data-t="38">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Repeat buyer rate</span><span class="vc-stat-val"><span class="count" data-t="61">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Revenue generated</span><span class="vc-v">₹<span class="count" data-t="4.7" data-f="1">0</span>Cr</span></div>
+        <div class="vc-row"><span class="vc-n">Cart abandonment ↓</span><span class="vc-v"><span class="count" data-t="38">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Repeat buyer rate</span><span class="vc-v"><span class="count" data-t="61">0</span>%</span></div>
       </div>
     </div>
-    <!-- Healthcare -->
-    <div class="vc vc-hc fade-in fade-in-delay-1">
-      <div class="vc-glow"></div>
-      <div class="vc-icon-row"><div class="vc-dot" style="background:#4AFFC4"></div>Healthcare</div>
-      <div class="vc-client">MedPlus & 8 clinic chains</div>
-      <div class="vc-big"><span class="count" data-t="3" data-s=".1x">0</span></div>
-      <div class="vc-metric">Patient appointment lift</div>
+    <div class="vc fade-in fd1">
+      <div class="vc-top"><div class="vc-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="vc-vname">Healthcare</div></div>
+      <div class="vc-client">MedPlus &amp; 8 clinic chains</div>
+      <div class="vc-big"><span class="count" data-t="3">0</span>.1×</div>
+      <div class="vc-metric">Patient Appointment Lift</div>
       <div class="vc-stats">
-        <div class="vc-stat-row"><span class="vc-stat-name">Cost per lead ↓</span><span class="vc-stat-val"><span class="count" data-t="52">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Organic traffic ↑</span><span class="vc-stat-val">+<span class="count" data-t="218">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Teleconsults/month</span><span class="vc-stat-val"><span class="count" data-t="14">0</span>K</span></div>
+        <div class="vc-row"><span class="vc-n">Cost per lead ↓</span><span class="vc-v"><span class="count" data-t="52">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Organic traffic ↑</span><span class="vc-v">+<span class="count" data-t="218">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Teleconsults/month</span><span class="vc-v"><span class="count" data-t="14">0</span>K</span></div>
       </div>
     </div>
-    <!-- Finance -->
-    <div class="vc vc-fi fade-in fade-in-delay-2">
-      <div class="vc-glow"></div>
-      <div class="vc-icon-row"><div class="vc-dot" style="background:#7B9FFF"></div>Finance & BFSI</div>
-      <div class="vc-client">WealthEdge & 6 NBFCs</div>
+    <div class="vc fade-in fd2">
+      <div class="vc-top"><div class="vc-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="vc-vname">Finance &amp; BFSI</div></div>
+      <div class="vc-client">WealthEdge &amp; 6 NBFCs</div>
       <div class="vc-big"><span class="count" data-t="290">0</span>%</div>
-      <div class="vc-metric">Qualified lead growth</div>
+      <div class="vc-metric">Qualified Lead Growth</div>
       <div class="vc-stats">
-        <div class="vc-stat-row"><span class="vc-stat-name">AUM influenced</span><span class="vc-stat-val">₹<span class="count" data-t="320">0</span>Cr</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">App installs</span><span class="vc-stat-val"><span class="count" data-t="82">0</span>K</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Compliance-safe CTR</span><span class="vc-stat-val"><span class="count" data-t="4.8" data-f="1">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">AUM influenced</span><span class="vc-v">₹<span class="count" data-t="320">0</span>Cr</span></div>
+        <div class="vc-row"><span class="vc-n">App installs</span><span class="vc-v"><span class="count" data-t="82">0</span>K</span></div>
+        <div class="vc-row"><span class="vc-n">Compliance-safe CTR</span><span class="vc-v"><span class="count" data-t="4.8" data-f="1">0</span>%</span></div>
       </div>
     </div>
-    <!-- Real Estate -->
-    <div class="vc vc-re fade-in">
-      <div class="vc-glow"></div>
-      <div class="vc-icon-row"><div class="vc-dot" style="background:#FFD166"></div>Real Estate</div>
-      <div class="vc-client">Lodha, PropNest & 6 developers</div>
+    <div class="vc fade-in">
+      <div class="vc-top"><div class="vc-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="vc-vname">Real Estate</div></div>
+      <div class="vc-client">Lodha, PropNest &amp; 6 developers</div>
       <div class="vc-big"><span class="count" data-t="1400">0</span>+</div>
-      <div class="vc-metric">Site visits generated</div>
+      <div class="vc-metric">Site Visits Generated</div>
       <div class="vc-stats">
-        <div class="vc-stat-row"><span class="vc-stat-name">Inventory sold via ads</span><span class="vc-stat-val"><span class="count" data-t="73">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Cost per site visit ↓</span><span class="vc-stat-val"><span class="count" data-t="44">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">NRI cities targeted</span><span class="vc-stat-val"><span class="count" data-t="9">0</span> cities</span></div>
+        <div class="vc-row"><span class="vc-n">Inventory sold via ads</span><span class="vc-v"><span class="count" data-t="73">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Cost per site visit ↓</span><span class="vc-v"><span class="count" data-t="44">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">NRI cities targeted</span><span class="vc-v"><span class="count" data-t="9">0</span> cities</span></div>
       </div>
     </div>
-    <!-- Education -->
-    <div class="vc vc-ed fade-in fade-in-delay-1">
-      <div class="vc-glow"></div>
-      <div class="vc-icon-row"><div class="vc-dot" style="background:#E07AF5"></div>Education</div>
-      <div class="vc-client">UpLearn & 11 EdTechs</div>
+    <div class="vc fade-in fd1">
+      <div class="vc-top"><div class="vc-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><div class="vc-vname">Education</div></div>
+      <div class="vc-client">UpLearn &amp; 11 EdTechs</div>
       <div class="vc-big"><span class="count" data-t="48">0</span>K</div>
-      <div class="vc-metric">Enrolments driven</div>
+      <div class="vc-metric">Enrolments Driven</div>
       <div class="vc-stats">
-        <div class="vc-stat-row"><span class="vc-stat-name">Course completion ↑</span><span class="vc-stat-val"><span class="count" data-t="34">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Cost per lead</span><span class="vc-stat-val">₹<span class="count" data-t="180">0</span></span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Demo-to-enrol rate</span><span class="vc-stat-val"><span class="count" data-t="38">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Course completion ↑</span><span class="vc-v"><span class="count" data-t="34">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Cost per lead</span><span class="vc-v">₹<span class="count" data-t="180">0</span></span></div>
+        <div class="vc-row"><span class="vc-n">Demo-to-enrol rate</span><span class="vc-v"><span class="count" data-t="38">0</span>%</span></div>
       </div>
     </div>
-    <!-- SaaS -->
-    <div class="vc vc-sa fade-in fade-in-delay-2">
-      <div class="vc-glow"></div>
-      <div class="vc-icon-row"><div class="vc-dot" style="background:#FF6B9D"></div>SaaS & Tech</div>
-      <div class="vc-client">Razorpay, Zoho & 9 startups</div>
-      <div class="vc-big"><span class="count" data-t="2" data-s=".6x">0</span></div>
-      <div class="vc-metric">MRR growth rate</div>
+    <div class="vc fade-in fd2">
+      <div class="vc-top"><div class="vc-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="vc-vname">SaaS &amp; Tech</div></div>
+      <div class="vc-client">Razorpay, Zoho &amp; 9 startups</div>
+      <div class="vc-big"><span class="count" data-t="2">0</span>.6×</div>
+      <div class="vc-metric">MRR Growth Rate</div>
       <div class="vc-stats">
-        <div class="vc-stat-row"><span class="vc-stat-name">Trial signups ↑</span><span class="vc-stat-val">+<span class="count" data-t="340">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">Churn reduced ↓</span><span class="vc-stat-val"><span class="count" data-t="29">0</span>%</span></div>
-        <div class="vc-stat-row"><span class="vc-stat-name">CAC payback period</span><span class="vc-stat-val"><span class="count" data-t="4.2" data-f="1">0</span> mo</span></div>
+        <div class="vc-row"><span class="vc-n">Trial signups ↑</span><span class="vc-v">+<span class="count" data-t="340">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">Churn reduced ↓</span><span class="vc-v"><span class="count" data-t="29">0</span>%</span></div>
+        <div class="vc-row"><span class="vc-n">CAC payback period</span><span class="vc-v"><span class="count" data-t="4.2" data-f="1">0</span> mo</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PHILOSOPHY ── -->
+<!-- PHILOSOPHY -->
 <section class="philosophy" id="philosophy">
   <div class="section-eyebrow">Why It Works</div>
   <h2 class="section-title">Three Beliefs That<br><em>Separate</em> Us</h2>
-  <p class="section-sub">
-    Results don't happen by accident. They're the product of a clear philosophy applied consistently —
-    even when clients push for shortcuts. Especially then.
-  </p>
-
+  <p class="section-sub">Results don't happen by accident. They're the product of a clear philosophy applied consistently — even when clients push for shortcuts. Especially then.</p>
   <div class="phil-grid">
     <div class="phil-card fade-in">
       <div class="phil-num">01</div>
       <div class="phil-title">Obsess Over Signals, Not Noise</div>
-      <p class="phil-desc">
-        The marketing world is drowning in data but starving for insight. We cut through by focusing only on metrics
-        that have a direct causal relationship with revenue — not the ones that look good in slide decks.
-        Follower counts don't pay salaries. Conversions do.
-        <br><br>
-        Every KPI we track for a client must answer one question: "Does improving this number put more money
-        in their pocket?" If it doesn't, we don't track it.
-      </p>
-      <div class="phil-highlight">We measure fewer things. Better.</div>
+      <p class="phil-desc">The marketing world is drowning in data but starving for insight. We focus only on metrics with a direct causal relationship with revenue — not the ones that look good in slide decks. Follower counts don't pay salaries. Conversions do.<br><br>Every KPI we track must answer one question: "Does improving this number put more money in their pocket?" If it doesn't, we don't track it.</p>
+      <div class="phil-hl">We measure fewer things. Better.</div>
     </div>
-    <div class="phil-card fade-in fade-in-delay-1">
+    <div class="phil-card fade-in fd1">
       <div class="phil-num">02</div>
       <div class="phil-title">Every Vertical Is a Different Language</div>
-      <p class="phil-desc">
-        A healthcare patient doesn't behave like a SaaS buyer. A luxury flat purchase takes 14 weeks;
-        a fashion item takes 14 minutes. We don't recycle strategies across industries.
-        We build from scratch, informed by vertical-specific behavioural data we've accumulated
-        across hundreds of campaigns.
-        <br><br>
-        This is why we hire specialists, not generalists. Your healthcare campaigns are run by a team
-        that has only ever worked in healthcare marketing.
-      </p>
-      <div class="phil-highlight">Vertical depth beats horizontal breadth.</div>
+      <p class="phil-desc">A healthcare patient doesn't behave like a SaaS buyer. A luxury flat purchase takes 14 weeks; a fashion item, 14 minutes. We don't recycle strategies — we build from scratch, informed by vertical-specific behavioural data accumulated across hundreds of campaigns.<br><br>This is why we hire specialists. Your healthcare campaigns are run by a team that has only ever worked in healthcare marketing.</p>
+      <div class="phil-hl">Vertical depth beats horizontal breadth.</div>
     </div>
-    <div class="phil-card fade-in fade-in-delay-2">
+    <div class="phil-card fade-in fd2">
       <div class="phil-num">03</div>
       <div class="phil-title">Speed Is a Competitive Advantage</div>
-      <p class="phil-desc">
-        Markets move fast. Consumer sentiment shifts overnight. Algorithms change weekly.
-        The agencies that win are the ones who can identify what's working on Tuesday and scale it by Thursday —
-        not the ones waiting for a monthly review meeting.
-        <br><br>
-        Our 48-hour decision cycle, live dashboards, and flat internal structure mean we move faster than
-        the market — and significantly faster than any agency three times our size.
-      </p>
-      <div class="phil-highlight">48-hour decision cycles. Always.</div>
+      <p class="phil-desc">Markets move fast. Consumer sentiment shifts overnight. Algorithms change weekly. The agencies that win identify what's working on Tuesday and scale it by Thursday — not the ones waiting for a monthly review meeting.<br><br>Our 48-hour decision cycle, live dashboards, and flat internal structure mean we move faster than the market — and faster than any agency three times our size.</p>
+      <div class="phil-hl">48-hour decision cycles. Always.</div>
     </div>
   </div>
 </section>
 
-<!-- ── COMBINED IMPACT STRIP ── -->
+<!-- IMPACT STRIP -->
 <div class="impact-strip">
   <div class="is-inner">
-    <div class="is-left">
-      <div class="is-label">Combined Client Impact</div>
-      <div class="is-title">The Full<br>Scorecard</div>
-    </div>
+    <div><div class="is-label">Combined Client Impact</div><div class="is-title">The Full<br>Scorecard</div></div>
     <div class="is-metrics">
-      <div class="is-item">
-        <div class="is-num"><span class="count" data-t="120">0</span>+</div>
-        <div class="is-desc">Brands Scaled</div>
-      </div>
-      <div class="is-item">
-        <div class="is-num">₹<span class="count" data-t="9">0</span>Cr+</div>
-        <div class="is-desc">Revenue Attributed</div>
-      </div>
-      <div class="is-item">
-        <div class="is-num"><span class="count" data-t="68">0</span>K+</div>
-        <div class="is-desc">Leads Generated</div>
-      </div>
-      <div class="is-item">
-        <div class="is-num"><span class="count" data-t="6">0</span></div>
-        <div class="is-desc">Verticals Mastered</div>
-      </div>
-      <div class="is-item">
-        <div class="is-num"><span class="count" data-t="97">0</span>%</div>
-        <div class="is-desc">Client Retention</div>
-      </div>
+      <div class="is-item"><div class="is-num"><span class="count" data-t="120">0</span>+</div><div class="is-desc">Brands Scaled</div></div>
+      <div class="is-item"><div class="is-num">₹<span class="count" data-t="9">0</span>Cr+</div><div class="is-desc">Revenue Attributed</div></div>
+      <div class="is-item"><div class="is-num"><span class="count" data-t="68">0</span>K+</div><div class="is-desc">Leads Generated</div></div>
+      <div class="is-item"><div class="is-num"><span class="count" data-t="6">0</span></div><div class="is-desc">Verticals Mastered</div></div>
+      <div class="is-item"><div class="is-num"><span class="count" data-t="97">0</span>%</div><div class="is-desc">Client Retention</div></div>
     </div>
     <a href="#contact" class="is-cta">Start Growing →</a>
   </div>
 </div>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer id="contact">
-  <div class="footer-logo">PULSE<span>.</span>MEDIA</div>
-  <div class="footer-copy">
-    © 2026 Pulse Media. All client data based on internal reporting.<br>
-    Results may vary based on market conditions, budget, and vertical.
-  </div>
-  <div class="footer-links">
-    <a href="#">Case Studies</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-    <a href="#">Privacy</a>
-  </div>
+  <div class="footer-logo">Pulse<span>.</span>Media</div>
+  <div class="footer-copy">© 2026 Pulse Media. All client data based on internal reporting.<br>Results may vary based on market conditions, budget, and vertical.</div>
+  <div class="footer-links"><a href="#">Case Studies</a><a href="#">Services</a><a href="#">Contact</a><a href="#">Privacy</a></div>
 </footer>
 
 <script>
-  /* ── COUNTER ANIMATION ── */
-  function runCounters(container) {
-    container.querySelectorAll('.count:not(.done)').forEach(el => {
-      el.classList.add('done');
-      const t   = parseFloat(el.dataset.t);
-      const f   = parseInt(el.dataset.f || 0);
-      const sfx = el.dataset.s || '';
-      const dur = 1600;
-      const st  = performance.now();
-      (function tick(now) {
-        const p = Math.min((now - st) / dur, 1);
-        const ease = 1 - Math.pow(1 - p, 3);
-        el.textContent = (f ? (t * ease).toFixed(f) : Math.round(t * ease)) + sfx;
-        if (p < 1) requestAnimationFrame(tick);
-      })(performance.now());
-    });
-  }
+const STEPS = [
+  { desc: "Before spending a single rupee of your budget, we spend weeks truly understanding your business. We audit your existing funnels, analyse competitor positioning, map your audience segments with first-party data, and identify the single biggest lever for growth. Most agencies skip this. We consider it non-negotiable — it's why our campaigns outperform from day one.", tags: ["Funnel Audit","Competitor Analysis","Audience Mapping","Cohort Research"], snum: "2.4×", slabel: "Better Campaign Outcomes" },
+  { desc: "Data becomes direction. We build your full-funnel growth strategy — from awareness channels to retention loops — with clear attribution models, KPI targets tied to revenue (not impressions), and a channel mix engineered for your vertical's buying behaviour. Every strategy ships with a 90-day roadmap and a defined success scorecard.", tags: ["Full-Funnel Architecture","Attribution Modelling","Channel Mix Design","KPI Framework"], snum: "7", slabel: "Touchpoints Tracked Before Conversion" },
+  { desc: "Strategy without execution is fiction. Our in-house creative, media buying, and SEO teams activate simultaneously across paid search, paid social, programmatic display, content, email, and WhatsApp — each channel fed with creative engineered to the platform's native behaviour. We run a minimum of three creative hypotheses at launch.", tags: ["Paid Media","Creative Testing","SEO & Content","WhatsApp Automation","Email Flows"], snum: "14", slabel: "Ad Variants Per Client Per Month" },
+  { desc: "Every campaign runs inside a live analytics environment built specifically for your business — custom dashboards that surface what matters to your team, not a generic metrics dump. Weekly review cycles mean underperforming assets are paused within 48 hours and budget is reallocated to winners in real time.", tags: ["Live Dashboards","Weekly Reviews","A/B Testing","Budget Reallocation"], snum: "11", slabel: "Days to Identify Winning Creative" },
+  { desc: "Once a channel-funnel combination proves itself, we scale deliberately — protecting efficiency metrics while expanding reach. We use lookalike modelling, CRM data enrichment, and cross-channel sequencing to compound results over time. The goal isn't just a great quarter; it's a business that grows more efficiently every month.", tags: ["Lookalike Audiences","CRM Enrichment","Cross-Channel Sequencing","LTV Optimisation"], snum: "3.1×", slabel: "Better Efficiency at Month 12 vs Month 1" }
+];
 
-  /* ── INTERSECTION OBSERVER ── */
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        runCounters(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
+function selectStep(i) {
+  document.querySelectorAll('.pstep').forEach((el,idx) => el.classList.toggle('active', idx===i));
+  document.querySelectorAll('.pcard').forEach((el,idx) => el.classList.toggle('active', idx===i));
+  const s = STEPS[i];
+  document.getElementById('pexp-desc').textContent = s.desc;
+  document.getElementById('pexp-snum').textContent = s.snum;
+  document.getElementById('pexp-slabel').textContent = s.slabel;
+  document.getElementById('pexp-tags').innerHTML = s.tags.map(t=>`<span class="ptag">${t}</span>`).join('');
+}
 
-  document.querySelectorAll('.fade-in, .numbers-bar, .impact-strip').forEach(el => io.observe(el));
+function runCounters(root) {
+  root.querySelectorAll('.count:not(.done)').forEach(el => {
+    el.classList.add('done');
+    const t = parseFloat(el.dataset.t), f = parseInt(el.dataset.f||0), sfx = el.dataset.s||'', dur = 1500, st = performance.now();
+    (function tick(now) {
+      const p = Math.min((now-st)/dur,1), ease = 1-Math.pow(1-p,3);
+      el.textContent = (f?(t*ease).toFixed(f):Math.round(t*ease))+sfx;
+      if(p<1) requestAnimationFrame(tick);
+    })(performance.now());
+  });
+}
 
-  // Run hero counters immediately
-  runCounters(document.querySelector('.hero'));
-  runCounters(document.querySelector('.hero-stats'));
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); runCounters(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in, .nb-bar, .impact-strip').forEach(el => io.observe(el));
+runCounters(document.querySelector('.hero'));
 </script>
 </body>
 </html>
